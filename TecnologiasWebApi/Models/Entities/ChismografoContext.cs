@@ -19,6 +19,7 @@ public partial class ChismografoContext : DbContext
     public virtual DbSet<Chisme> Chisme { get; set; }
 
     public virtual DbSet<Usuarios> Usuarios { get; set; }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder
@@ -36,6 +37,7 @@ public partial class ChismografoContext : DbContext
             entity.HasIndex(e => e.IdUsuario, "fkChismeUsuario_idx");
 
             entity.Property(e => e.Descripcion).HasColumnType("text");
+            entity.Property(e => e.Fecha).HasColumnType("datetime");
             entity.Property(e => e.Titulo).HasMaxLength(120);
 
             entity.HasOne(d => d.IdUsuarioNavigation).WithMany(p => p.InverseIdUsuarioNavigation)

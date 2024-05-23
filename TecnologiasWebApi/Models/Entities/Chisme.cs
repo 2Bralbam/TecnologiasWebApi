@@ -13,6 +13,8 @@ public partial class Chisme
 
     public int IdUsuario { get; set; }
 
+    public DateTime Fecha { get; set; }
+
     public virtual Chisme IdUsuarioNavigation { get; set; } = null!;
 
     public virtual ICollection<Chisme> InverseIdUsuarioNavigation { get; set; } = new List<Chisme>();

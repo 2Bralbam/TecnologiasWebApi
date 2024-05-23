@@ -33,7 +33,7 @@ namespace TecnologiasWebApi.Controllers
         {
             if(chisme != null)
             {
-                chisme.IdUsuario = 0;
+                chisme.IdUsuario = 1;
                 bool SeGuardo = _chismesRepositorio.GuardarChisme(chisme);
                 if (SeGuardo)
                 {
@@ -52,14 +52,22 @@ namespace TecnologiasWebApi.Controllers
             }
         }
         [HttpPut]
-        public IActionResult EditarChisme(ChismeDTO chisme)
+        public IActionResult EditarChisme(Chisme chisme)
         {
-            return Ok();
+            bool Editado = _chismesRepositorio.EditarChisme(chisme, 1);
+            if (Editado)
+                return Ok();
+            else
+                return BadRequest();
         }
         [HttpDelete]
         public IActionResult BorrarChisme(int Id)
         {
-            return Ok();
+            bool Eliminado = _chismesRepositorio.EliminarChismeById(Id,1);
+            if (Eliminado)
+                return Ok();
+            else
+                return BadRequest();
         }
     }
 }
